@@ -1,3 +1,9 @@
+/*
+	LAB8, 2111-003
+	
+	Cong Tuan Nguyen
+	your name here
+*/
 #include "Maze.h"
 #include "Color.h"
 #include "Rect.h"
