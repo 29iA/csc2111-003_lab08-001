@@ -73,18 +73,18 @@ bool Maze::traverse(int row, int col)
          //IMPORTANT!!
          //don't use row++ or column++ use row + 1 or col + 1, etc.
          //IMPORTANT: make use of the boolean that is returned every time you call traverse
-			done == traverse(row - 1, col);
+			done = traverse(row - 1, col);
 			if (done != true)
 			{
-				done == traverse(row, col + 1);
+				done = traverse(row, col + 1);
 				
 				if (done != true)
 				{
-					done == traverse(row + 1, col);
+					done = traverse(row + 1, col);
 					
 					if (done != true)
 					{
-						done == traverse(row, col - 1);
+						done = traverse(row, col - 1);
 					}
 				}
 			}
@@ -105,7 +105,7 @@ bool Maze::traverse(int row, int col)
          //DO THIS
 			maze->setElement(row, col, BACKTRACK);
 
-         Sleep(2);
+         Sleep(20);
          gui->update();
       }
    }
