@@ -52,7 +52,7 @@ bool Maze::traverse(int row, int col)
       //now it has been tried so mark it as tried
 		maze->setElement(row, col, TRIED);
 
-      Sleep(75);  //slow down the maze traversal
+      Sleep(2);  //slow down the maze traversal
       gui->update();
 
       //DO THIS
@@ -66,7 +66,6 @@ bool Maze::traverse(int row, int col)
       }
       else
       {
-
          //DO THIS
          //make recursive calls that consider all four orthogonal directions
          //basically, we will try all possible paths until a solution is found
@@ -76,22 +75,19 @@ bool Maze::traverse(int row, int col)
          //IMPORTANT: make use of the boolean that is returned every time you call traverse
 			done == traverse(row - 1, col);
 			if (done != true)
-				done == traverse(row, col - 1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			{
+				done == traverse(row, col + 1);
+				
+				if (done != true)
+				{
+					done == traverse(row + 1, col);
+					
+					if (done != true)
+					{
+						done == traverse(row, col - 1);
+					}
+				}
+			}
       }
 
       //if we are done, on the way back recursively we must mark the path that we took as the solution path
@@ -109,7 +105,7 @@ bool Maze::traverse(int row, int col)
          //DO THIS
 			maze->setElement(row, col, BACKTRACK);
 
-         Sleep(75);
+         Sleep(2);
          gui->update();
       }
    }
